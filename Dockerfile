@@ -7,12 +7,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git
 
 COPY scripts /scripts
+COPY config /config
 
 WORKDIR /nextstrain/auspice
 
 RUN /scripts/download-repo https://github.com/BCCDC-PHL/auspice ${AUSPICE_VERSION} . \
     && npm install --omit dev . \
-    && npm link
+    && npm install --global . \
+    && auspice build --extend /config/config.json
 
 ENV HOST=0.0.0.0
 
