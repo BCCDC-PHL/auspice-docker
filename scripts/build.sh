@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build . -t dfornika/auspice
+docker build . -t bccdc-phl/auspice
