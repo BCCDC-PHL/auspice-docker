@@ -1,6 +1,6 @@
 FROM node:22-slim
 
-ARG AUSPICE_VERSION="v2.66.0-bccdc-phl.build-0"
+ARG AUSPICE_VERSION="v2.66.0-bccdc-phl.build-1"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
