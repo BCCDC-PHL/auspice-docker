@@ -1,6 +1,6 @@
-FROM node:16-slim
+FROM node:22-slim
 
-ARG AUSPICE_VERSION="v2.59.1"
+ARG AUSPICE_VERSION="v2.66.0-bccdc-phl.build-0"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
@@ -12,6 +12,7 @@ COPY config /config
 WORKDIR /nextstrain/auspice
 
 RUN /scripts/download-repo https://github.com/BCCDC-PHL/auspice ${AUSPICE_VERSION} . \
+    && npx update-browserslist-db@latest \
     && npm install --omit dev . \
     && npm install --global . \
     && auspice build --extend /config/config.json
