@@ -11,6 +11,7 @@ cd "$dst"
 
 # Clone the source repo into the destination, shallowly
 git clone --depth=20 --branch="$ref" "$src" .
+git switch -c build
 
 # Record the git revision (always a sha) and id (based on the closest tag)
 git rev-parse HEAD > .GIT_REVISION
